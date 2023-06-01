@@ -4,7 +4,7 @@ import * as cors from 'cors';
 import * as logger from 'morgan';
 
 import { conectarServidorNoBD } from './config/db';
-import { routerUf} from './routes/uf';
+import { routerUf} from './routes/Uf';
 
 export const app = express();
 
