@@ -5,6 +5,8 @@ import * as logger from 'morgan';
 
 import { conectarServidorNoBD } from './config/db';
 import { routerUf} from './routes/Uf';
+import { routerMunicipio} from './routes/municipio';
+
 
 export const app = express();
 
@@ -16,3 +18,4 @@ app.use(logger('dev'));
 
 conectarServidorNoBD();
 app.use('/uf', routerUf);
+app.use('/municipio', routerMunicipio);
