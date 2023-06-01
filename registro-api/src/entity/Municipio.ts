@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, ManyToOne } from "typeorm"
 import { Uf } from "./Uf";
+import { Bairro } from "./Bairro";
 
 @Entity()
 export class Municipio{
@@ -17,7 +18,12 @@ export class Municipio{
     @Column()
     status: boolean;
 
-    @ManyToMany(() => Uf)
+    @ManyToOne(() => Uf)
     uf : Uf;
+
+    @OneToMany(() => Bairro, (bairro) => bairro.municipio, { onDelete: "CASCADE" })
+    bairros: Bairro[];
+
+
 
 }
