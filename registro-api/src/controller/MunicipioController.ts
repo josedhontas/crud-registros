@@ -18,8 +18,8 @@ export class MunicipioController {
             throw new Error(`Municipio com o ID ${id} não encontrada.`);
         }
         const municipioAtualizado = Object.assign(municipio, dadosAtualizados);
-        const ufSalva = await getManager().save(municipioAtualizado);
-        return ufSalva;
+        const municipioSalvo = await getManager().save(municipioAtualizado);
+        return municipioSalvo;
     }
 
     async apagarPorId(id: number) {
