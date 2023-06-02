@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { Municipio } from "../entity/Municipio";
-import { MunicipioController } from "../controller/MunicipioCOntroller";
+import { MunicipioController } from "../controller/MunicipioController";
 
 export const routerMunicipio = Router();
 
