@@ -4,9 +4,10 @@ import { Pessoa } from "./Pessoa";
 
 @Entity()
 export class Endereco{
-    constructor(logradouro: string, numero: number){
+    constructor(logradouro: string, numero: number, bairro: Bairro){
         this.logradouro = logradouro;
         this.numero = numero;
+        this.bairro = bairro;
 
     }
 

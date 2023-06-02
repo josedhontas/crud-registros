@@ -4,9 +4,10 @@ import { Bairro } from "./Bairro";
 
 @Entity()
 export class Municipio{
-    constructor(nome: string, status: boolean ){
+    constructor(nome: string, status: boolean, uf: Uf ){
         this.nome = nome;
         this.status = status;
+        this.uf = uf;
     }
 
     @PrimaryGeneratedColumn()

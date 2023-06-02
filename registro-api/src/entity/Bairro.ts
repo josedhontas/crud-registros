@@ -4,9 +4,10 @@ import { Endereco } from "./Endereco";
 
 @Entity()
 export class Bairro{
-    constructor(nome: string, status: boolean){
+    constructor(nome: string, status: boolean, municipio: Municipio){
         this.nome = nome;
         this.status = status;
+        this.municipio = municipio;
     }
 
     @PrimaryGeneratedColumn()

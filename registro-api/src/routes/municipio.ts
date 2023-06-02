@@ -5,3 +5,8 @@ import { MunicipioController } from "../controller/MunicipioController";
 export const routerMunicipio = Router();
 
 const municipioCtrl = new MunicipioController();
+
+routerMunicipio.post('/',async (req, res) => {
+
+    
+})
