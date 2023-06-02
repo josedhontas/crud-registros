@@ -10,7 +10,7 @@ routerUf.post('/', async (req, res) => {
     const { sigla, nome, status } = req.body;
     const uf = new Uf(sigla, nome, status);
     const ufSalva = await ufCtrl.salvar(uf);
-    res.json(uf);
+    res.json(ufSalva);
 
 })
 
@@ -25,6 +25,13 @@ routerUf.get('/', async (req, res) => {
     res.json(lancamentos);
     
 */
+
+routerUf.get('/municipios/:idUf',async (req, res) => {
+    const idUf = parseInt(req.params.idUf);
+    const municipios = await ufCtrl.recuperarMunicipioDaUf(idUf)
+    res.json(municipios);
+    
+})
 
 routerUf.put('/:idUf', async (req, res) => {
     const idUf = parseInt(req.params.idUf);

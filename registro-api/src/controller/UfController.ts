@@ -17,6 +17,14 @@ export class UfController {
         return uf;
     }
 
+    async recuperarMunicipioDaUf(id: number){
+        const uf = await getManager().findOne(Uf, id, {
+            relations:['municipios']
+        })
+        return uf.municipios
+
+    }
+
     async editarPorId(id: number, dadosAtualizados: Partial<Uf>) {
         const uf = await getManager().findOne(Uf, id);
         if (!uf) {
