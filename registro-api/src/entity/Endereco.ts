@@ -8,7 +8,6 @@ export class Endereco{
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
-
     }
 
     @PrimaryGeneratedColumn()

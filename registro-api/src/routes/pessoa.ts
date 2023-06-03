@@ -1,9 +1,24 @@
 import { Router } from "express";
 import { Pessoa } from "../entity/Pessoa";
 import { PessoaController } from "../controller/PessoaController";
+import { EnderecoController } from "../controller/EnderecoController";
 
 export const routerPessoa = Router();
 const pessoaCtrl = new PessoaController();
+const enderecoCtrl = new EnderecoController();
+
+routerPessoa.post('/',async (req, res) => {
+    const {idEnd, nome, idade} = req.body;
+    const endereco = await enderecoCtrl.recuperarPorId(idEnd);
+    if(endereco){
+        const pessoa = new Pessoa(nome, idade, endereco);
+        const pessoaSalva = await pessoaCtrl.salvar(pessoa);
+        res.json(pessoaSalva);
+    }
+    else{
+        res.status(404).json({mensagem: 'Endereco nao encontrado'});
+    }
+})
 
 routerPessoa.get('/:id',async (req, res) => {
     const id = parseInt(req.params.id);

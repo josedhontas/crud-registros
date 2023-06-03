@@ -1,9 +1,24 @@
 import { Router } from "express";
 import { Endereco } from "../entity/Endereco";
 import { EnderecoController } from "../controller/EnderecoController";
+import { BairroController } from "../controller/BairroContrroller";
 
 export const routerEndereco = Router();
 const enderecoCtrl = new EnderecoController();
+const bairroCtrl = new BairroController();
+
+routerEndereco.post('/',async (req, res) => {
+    const {idBairro, logradouro, numero} = req.body;
+    const bairro = await bairroCtrl.recuperarPorId(idBairro);
+    if(bairro){
+        const endereco = new Endereco(logradouro, numero, bairro);
+        const enderecoSalvo = await enderecoCtrl.salvar(endereco);
+        res.json(enderecoSalvo);
+    }
+    else{
+        res.status(404).json({mensagem: 'Bairro nao encontrado'});
+    }
+})
 
 routerEndereco.get('/:id',async (req, res) => {
     const id = parseInt(req.params.id);
