@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { Municipio } from "../entity/Municipio";
 import { MunicipioController } from "../controller/MunicipioController";
-import { Uf } from "../entity/Uf";
 import { UfController } from "../controller/UfController";
 
 export const routerMunicipio = Router();

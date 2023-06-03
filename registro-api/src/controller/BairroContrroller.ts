@@ -21,14 +21,12 @@ export class BairroController{
         const bairoSalvo = await getManager().save(bairroAtualizado);
         return bairoSalvo;
     }
-
-    async apagarPorId(id: number, dadosAtualizados: Partial<Bairro>) {
+    async apagarPorId(id: number) {
         const bairro = await getManager().findOne(Bairro, id);
-        if(!bairro){
-            throw new Error(`Bairro com o ID ${id} não encontrado.`);
+        if (!bairro) {
+            throw new Error(`Municipio com o ID ${id} não encontrado.`);
         }
-        const bairroAtualizado = Object.assign(bairro, dadosAtualizados);
-        const bairoSalvo = await getManager().save(bairroAtualizado);
-        return bairoSalvo;
+        const bairroRemovido = await getManager().remove(bairro);
+        return bairroRemovido;
     }
 }
