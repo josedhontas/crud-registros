@@ -12,6 +12,14 @@ export class BairroController{
         return bairro;
     }
 
+    async recuperarEnderecoDoBairro(id: number) {
+        const bairro = await getManager().findOne(Bairro, id, {
+            relations: ['enderecos ']
+        })
+        return bairro.enderecos
+
+    }
+
     async editarPorId(id: number, dadosAtualizados: Partial<Bairro>) {
         const bairro = await getManager().findOne(Bairro, id);
         if(!bairro){

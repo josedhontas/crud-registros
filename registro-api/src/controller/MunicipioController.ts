@@ -12,6 +12,14 @@ export class MunicipioController {
         return municipio;
     }
 
+    async recuperarBairroDoMuni(id: number) {
+        const municipio = await getManager().findOne(Municipio, id, {
+            relations: ['bairros ']
+        })
+        return municipio.bairros
+
+    }
+
     async editarPorId(id: number, dadosAtualizados: Partial<Municipio>) {
         const municipio = await getManager().findOne(Municipio, id);
         if (!municipio) {

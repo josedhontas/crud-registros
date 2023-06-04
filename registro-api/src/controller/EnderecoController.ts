@@ -12,6 +12,14 @@ export class EnderecoController{
         return endereco;
     }
 
+    async recuperarPessoaDoEnde(id: number) {
+        const endereco = await getManager().findOne(Endereco, id, {
+            relations: ['pessoas ']
+        })
+        return endereco.pessoas
+
+    }
+
     async editarPorId(id: number, dadosAtualizados: Partial<Endereco>) {
         const endereco = await getManager().findOne(Endereco, id);
         if (!endereco) {
