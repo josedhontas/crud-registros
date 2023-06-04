@@ -22,9 +22,9 @@ app.use(logger('dev'));
 conectarServidorNoBD();
 app.use('/uf', routerUf);
 app.use('/municipio', routerMunicipio);
-app.use('/bairro', routerMunicipio);
-app.use('/endereco', routerMunicipio);
-app.use('/pessoa', routerMunicipio);
+app.use('/bairro', routerBairro);
+app.use('/endereco', routerEndereco);
+app.use('/pessoa', routerPessoa);
 
 
 
