@@ -27,6 +27,13 @@ routerEndereco.get('/:id',async (req, res) => {
     
 })
 
+routerEndereco.get('/pessoas/:id',async (req, res) => {
+    const id = parseInt(req.params.id);
+    const pessoas = await enderecoCtrl.recuperarPessoaDoEnde(id)
+    res.json(pessoas);
+    
+})
+
 routerEndereco.put('/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     const dadosEndereco = req.body;

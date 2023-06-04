@@ -27,6 +27,13 @@ routerMunicipio.get('/:id',async (req, res) => {
     
 })
 
+routerMunicipio.get('/bairros/:id',async (req, res) => {
+    const id = parseInt(req.params.id);
+    const bairros = await municipioCtrl.recuperarBairroDoMuni(id)
+    res.json(bairros);
+    
+})
+
 routerMunicipio.put('/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     const dadosMunicipio = req.body;

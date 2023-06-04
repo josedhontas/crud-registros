@@ -26,6 +26,13 @@ routerBairro.get('/:id',async (req, res) => {
     res.json(bairro);
 })
 
+routerBairro.get('/enderecos/:id',async (req, res) => {
+    const id = parseInt(req.params.id);
+    const enderecos = await bairroCtrl.recuperarEnderecoDoBairro(id)
+    res.json(enderecos);
+    
+})
+
 routerBairro.put('/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     const dadosBairro = req.body;
